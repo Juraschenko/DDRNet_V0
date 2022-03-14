@@ -58,9 +58,9 @@ def test_fps(model, image_size):
 if __name__ == "__main__":
     image_size = (512, 1024)
     model = DualResNet(BasicBlock, [2, 2, 2, 2], num_classes=7, planes=32, spp_planes=128, head_planes=64,
-                       augment=True)
+                       augment=False)
     print(model)
     # model = torch.nn.DataParallel(model, device_ids=gpus).cuda()
-    load_checkpoint(torch.load(MODEL_PATH), model)
+    # load_checkpoint(torch.load(MODEL_PATH), model)
 
     test_fps(model, image_size)
